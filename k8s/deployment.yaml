@@ -6,7 +6,7 @@
           labels:
             app: blue
         spec:
-          replicas: 10
+          replicas: 7
           selector:
             matchLabels:
               app: blue
@@ -17,7 +17,7 @@
             spec:
               containers:
               - name: blue
-                image: kubedevio/nginx-color:blue
+                image: kubedevio/nginx-color:green
                 ports:
                 - containerPort: 80
 ---
