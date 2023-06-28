@@ -32,21 +32,4 @@
               targetPort: 80
           selector:
             app: blue
----
-        apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          namespace: blue
-          name: blue-ingress
-        spec:
-          rules:
-          - host: blue.traefik.189.7.79.10.nip.io
-            http:
-              paths:
-                - path: /
-                  pathType: Prefix
-                  backend:
-                    service:
-                       name: blue-service
-                       port:
-                        number: 80
+
