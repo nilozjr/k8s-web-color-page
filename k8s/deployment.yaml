@@ -40,10 +40,10 @@
           name: blue-ingress
         spec:
           rules:
-          - host: blue.kubernetes.in.cassems.com.br
+          - host: traefik.189.7.79.10.nip.io
             http:
               paths:
-                - path: /
+                - path: /blue
                   pathType: Prefix
                   backend:
                     service:
