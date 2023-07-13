@@ -1,0 +1,52 @@
+        kind: Deployment
+        apiVersion: apps/v1
+        metadata:
+          namespace: frontend
+          name: breaktest-deploy
+          labels:
+            app: breaktest
+        spec:
+          replicas: 5
+          selector:
+            matchLabels:
+              app: breaktest
+          template:
+            metadata:
+              labels:
+                app: breaktest
+            spec:
+              containers:
+              - name: breaktest
+                image: nilozjr/testeapi:v3
+                ports:
+                - containerPort: 3000
+---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          namespace: frontend
+          name: breaktest-svc
+        spec:
+          ports:
+            - port: 80
+              targetPort: 3000
+          selector:
+            app: breaktest
+---
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          namespace: frontend
+          name: breaktest-ingress
+        spec:
+          rules:
+          - host: breaktest.traefik.189.7.79.10.nip.io
+            http:
+              paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                       name: breaktest-svc
+                       port:
+                        number: 80
