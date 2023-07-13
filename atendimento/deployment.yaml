@@ -19,7 +19,7 @@
               - name: breaktest
                 image: nilozjr/testeapi:v3
                 ports:
-                - containerPort: 3001
+                - containerPort: 3000
 ---
         apiVersion: v1
         kind: Service
