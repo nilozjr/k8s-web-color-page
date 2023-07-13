@@ -32,21 +32,3 @@
               targetPort: 3000
           selector:
             app: breaktest
----
-        apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          namespace: frontend
-          name: breaktest-ingress
-        spec:
-          rules:
-          - host: breaktest.traefik.189.7.79.10.nip.io
-            http:
-              paths:
-                - path: /
-                  pathType: Prefix
-                  backend:
-                    service:
-                       name: breaktest-svc
-                       port:
-                        number: 80
