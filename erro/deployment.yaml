@@ -6,7 +6,7 @@
           labels:
             app: breaktest
         spec:
-          replicas: 5
+          replicas: 3
           selector:
             matchLabels:
               app: breaktest
@@ -28,11 +28,7 @@
                     cpu: "100m"
                   limits:
                     memory: "64Mi"
-                    cpu: "500m"
-                command:
-                  - "/consumer"
-                  - -port
-                  - "3000"                
+                    cpu: "500m"               
                 ports:
                 - containerPort: 3000
 ---
