@@ -27,10 +27,3 @@
                     cpu: "500m"
                 ports:
                 - containerPort: 3000
-                livenessProbe:
-                httpGet:
-                    path: /healthz
-                    port: 3000
-                initialDelaySeconds: 15
-                periodSeconds: 15
-                failureThreshold: 2
