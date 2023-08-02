@@ -1,26 +1,22 @@
         kind: Deployment
         apiVersion: apps/v1
         metadata:
-          namespace: frontend
-          name: breaktest-deploy
+          namespace: erro
+          name: erro-deploy
           labels:
-            app: breaktest
+            app: erro
         spec:
-          replicas: 10
+          replicas: 3
           selector:
             matchLabels:
-              app: breaktest
+              app: erro
           template:
             metadata:
-              annotations:
-                prometheus.io/scrape: "true"
-                prometheus.io/path: /metrics
-                prometheus.io/port: "3000"            
               labels:
-                app: breaktest
+                app: erro
             spec:
               containers:
-              - name: breaktest
+              - name: erro
                 image: nilozjr/testeapi:v3
                 resources:
                   requests:
@@ -28,7 +24,7 @@
                     cpu: "100m"
                   limits:
                     memory: "64Mi"
-                    cpu: "500m"               
+                    cpu: "500m"
                 ports:
                 - containerPort: 3000
                 livenessProbe:
@@ -38,14 +34,3 @@
                 initialDelaySeconds: 15
                 periodSeconds: 15
                 failureThreshold: 2
----
-        apiVersion: v1
-        kind: Service
-        metadata:
-          namespace: frontend
-          name: breaktest-svc
-        spec:
-          ports:
-            - port: 80
-              targetPort: 3000
-          selector:
