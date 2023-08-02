@@ -6,7 +6,7 @@
           labels:
             app: breaktest
         spec:
-          replicas: 5
+          replicas: 10
           selector:
             matchLabels:
               app: breaktest
