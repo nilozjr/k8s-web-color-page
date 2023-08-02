@@ -6,7 +6,7 @@
           labels:
             app: blue
         spec:
-          replicas: 7
+          replicas: 5
           selector:
             matchLabels:
               app: blue
